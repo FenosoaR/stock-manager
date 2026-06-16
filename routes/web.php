@@ -1,23 +1,19 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Category;
+use App\Http\Controllers\StockMovementController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
 
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
 Route::get('/dashboard' , [DashboardController::class , 'index'])->middleware(['auth' , 'verified'])->name('dashboard');
 
@@ -28,6 +24,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('stock' , StockMovementController::class);
 });
 
 require __DIR__.'/auth.php';
