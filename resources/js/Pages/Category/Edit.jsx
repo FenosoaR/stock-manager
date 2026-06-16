@@ -1,24 +1,23 @@
 import { useForm } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
-export default function Create() {
+export default function Edit({ category }) {
 
-    const { data, setData, post, errors, processing } = useForm({
-        name: '',
-        slug: '',
-        description: '',
-        status: 'active',
+    const { data, setData, put, errors, processing } = useForm({
+        name: category.name || '',
+        slug:  category.slug || '',
+        description: category.description || '',
+        status: category.status || '',
     });
-  
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('categories.store'));
+        put(route('categories.update' , category.id ));
     };
 
     return (
         <AuthenticatedLayout
-            header={<h2 className="text-xl font-semibold">Créer une catégorie</h2>}
+            header={<h2 className="text-xl font-semibold">Modifier une catégorie</h2>}
         >
             <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
 
@@ -78,7 +77,7 @@ export default function Create() {
                         disabled={processing}
                         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                     >
-                        {processing ? 'Enregistrement...' : 'Créer'}
+                        {processing ? 'Enregistrement...' : 'Mettre a jour'}
                     </button>
 
                 </form>

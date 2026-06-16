@@ -33,7 +33,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'status' => 'required'
+        ]);
+
+        Category::create($request->all());
+
+        return redirect()->route('categories.index')
+        ->with('success', 'Catégorie ajoutée avec succès');;
     }
 
     /**
@@ -49,7 +58,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return Inertia::render('Category/Edit' , [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -57,7 +68,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'status' => 'required'
+        ]);
+
+        $category->update($request->all());
+
+        return redirect()->route('categories.index')
+        ->with('success', 'Catégorie mis a jour avec succès');;
     }
 
     /**
@@ -65,6 +85,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('categories.index')
+        ->with('success', 'Catégorie supprime avec succès');;
     }
 }
