@@ -5,7 +5,7 @@ export default function Sidebar({ open, toggle }) {
 
     const menu = [
         { label: 'Dashboard', icon: '📊', href: '/dashboard' },
-        { label: 'Produits', icon: '📦', href: '/products' },
+        { label: 'Produits', icon: '📦', href: route('products.index') },
         { label: 'Clients', icon: '👥', href: '/clients' },
         { label: 'Catégories', icon: '📁',href: route('categories.index')},
     ];
