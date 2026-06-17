@@ -1,5 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Link, usePage } from '@inertiajs/react';
+import { PencilIcon } from '@heroicons/react/24/outline';
+import { TrashIcon } from '@heroicons/react/24/outline';
 
 export default function Index({ products }) {
 
@@ -50,7 +52,7 @@ export default function Index({ products }) {
                     </thead>
 
                     <tbody>
-                        {products.map((product) => (
+                        {products.data.map((product) => (
                             <tr key={product.id} className="border-t">
 
                                 <td className="p-2">{product.name}</td>
@@ -80,12 +82,12 @@ export default function Index({ products }) {
                                     </span>
                                 </td>
 
-                                <td className="p-2 flex gap-2">
+                                <td className="p-2 flex gap-3">
                                     <Link
                                         href={route('products.edit', product.id)}
                                         className="text-blue-600"
                                     >
-                                        Edit
+                                           <PencilIcon className="w-5 h-5" />
                                     </Link>
 
                                     <Link
@@ -94,7 +96,7 @@ export default function Index({ products }) {
                                         as="button"
                                         className="text-red-600"
                                     >
-                                        Delete
+                                       <TrashIcon className="w-5 h-5" />
                                     </Link>
                                 </td>
 
@@ -102,7 +104,31 @@ export default function Index({ products }) {
                         ))}
                     </tbody>
 
+
+
                 </table>
+                
+                <div className="flex gap-2 mt-4 justify-center">
+
+                {products.links.map((link, index) => (
+
+                    <Link
+                        key={index}
+                        href={link.url || ''}
+                        className={`px-3 py-2 rounded border
+                            ${link.active
+                                ? 'bg-blue-600 text-white'
+                                : 'bg-white'}
+                        `}
+                    >
+                        {link.label
+                            .replace('&laquo;', '«')
+                            .replace('&raquo;', '»')}
+                    </Link>
+
+                ))}
+
+                </div>
 
             </div>
         </AuthenticatedLayout>

@@ -1,4 +1,4 @@
-import { useForm } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 export default function Create() {
@@ -20,6 +20,8 @@ export default function Create() {
         <AuthenticatedLayout
             header={<h2 className="text-xl font-semibold">Créer une catégorie</h2>}
         >
+          
+
             <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
 
                 <form onSubmit={submit} className="space-y-4">

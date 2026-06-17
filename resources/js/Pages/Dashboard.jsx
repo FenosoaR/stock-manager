@@ -1,5 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { useForm, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 
 export default function Dashboard({
     products,
@@ -28,13 +29,12 @@ export default function Dashboard({
 
     return (
         <AuthenticatedLayout header={<h2 className="text-xl font-semibold">Dashboard</h2>}>
+            <Head title="Dashboard - Stock Manager" />
 
             <div className="p-6 space-y-6">
-
-                {/* 🔍 FILTERS */}
                 <form onSubmit={submit} className="grid grid-cols-1 md:grid-cols-4 gap-4">
 
-                    {/* SEARCH */}
+                   
                     <input
                         type="text"
                         placeholder="Rechercher produit..."
@@ -43,7 +43,7 @@ export default function Dashboard({
                         onChange={e => setData('search', e.target.value)}
                     />
 
-                    {/* CATEGORY */}
+                 
                     <select
                         className="border p-2 rounded"
                         value={data.category_id}
@@ -57,7 +57,7 @@ export default function Dashboard({
                         ))}
                     </select>
 
-                    {/* STOCK FILTER */}
+               
                     <select
                         className="border p-2 rounded"
                         value={data.stock}
@@ -68,7 +68,7 @@ export default function Dashboard({
                         <option value="out">Out of Stock</option>
                     </select>
 
-                    {/* BUTTON */}
+           
                     <button className="bg-blue-600 text-white rounded">
                         Filtrer
                     </button>
@@ -116,7 +116,7 @@ export default function Dashboard({
                         </thead>
 
                         <tbody>
-                            {products.map(p => (
+                            {products.data.map(p => (
                                 <tr key={p.id} className="border-b">
 
                                     <td className="p-2">{p.name}</td>
@@ -140,6 +140,24 @@ export default function Dashboard({
                         </tbody>
 
                     </table>
+
+                    <div className="flex justify-center mt-6 gap-2">
+                    {products.links.map((link, index) => (
+                        <Link
+                            key={index}
+                            href={link.url || '#'}
+                            dangerouslySetInnerHTML={{ __html: link.label }}
+                            className={`px-3 py-2 border rounded
+                                ${
+                                    link.active
+                                        ? 'bg-blue-600 text-white'
+                                        : 'bg-white text-gray-700'
+                                }
+                                ${!link.url ? 'opacity-50 cursor-not-allowed' : ''}
+                            `}
+                        />
+                    ))}
+                </div>
 
                 </div>
 

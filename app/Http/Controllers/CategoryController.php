@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       $categories = Category::latest()->get();
+       $categories = Category::latest()->paginate(10);
 
        return Inertia::render('Category/Index' ,[
             'categories' => $categories,

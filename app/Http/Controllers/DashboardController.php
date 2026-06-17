@@ -47,7 +47,7 @@ class DashboardController extends Controller
         'outOfStockProducts' => Product::where('stock', 0)->count(),
 
    
-        'products' => $query->latest()->get(),
+        'products' => $query->latest()->paginate(10)->withQueryString(),
 
         'categories' => Category::all(),
 
