@@ -1,4 +1,4 @@
-import { useForm } from "@inertiajs/react";
+import { Head, useForm } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function Create({ categories }) {
@@ -22,6 +22,8 @@ export default function Create({ categories }) {
         <AuthenticatedLayout
             header={<h2 className="text-xl font-semibold">Créer un produit</h2>}
         >
+             <Head title="Create Products - Stock Manager" />
+
             <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
                 <form onSubmit={submit} className="space-y-4">
                     {/* NOM */}

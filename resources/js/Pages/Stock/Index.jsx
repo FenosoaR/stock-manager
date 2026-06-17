@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { useForm } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 
 export default function Index({ movements, products }) {
 
@@ -19,6 +19,7 @@ export default function Index({ movements, products }) {
 
     return (
         <AuthenticatedLayout header={<h2>Stock Management</h2>}>
+            <Head title="Stock - Stock Manager" />
 
             <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
 

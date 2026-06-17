@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { Link, usePage } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 
 export default function Index({ categories }) {
 
@@ -10,6 +10,8 @@ export default function Index({ categories }) {
         <AuthenticatedLayout
             header={<h2 className="text-xl font-semibold">Liste des catégories</h2>}
         >
+            <Head title="Category -Stock Manager" />
+
             <div className="bg-white p-6 rounded shadow">
 
 

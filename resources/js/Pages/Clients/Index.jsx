@@ -1,5 +1,5 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Link, usePage } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import { PencilIcon } from '@heroicons/react/24/outline';
 import { TrashIcon } from '@heroicons/react/24/outline';
 
@@ -11,6 +11,8 @@ export default function Index({ clients }) {
         <AuthenticatedLayout
             header={<h2 className="text-xl font-semibold">Liste des clients</h2>}
         >
+            <Head title="Clients -Stock Manager" />
+            
             <div className="bg-white p-6 rounded shadow">
 
                 {/* HEADER ACTION */}

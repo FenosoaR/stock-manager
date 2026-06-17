@@ -20,7 +20,7 @@ export default function Create() {
         <AuthenticatedLayout
             header={<h2 className="text-xl font-semibold">Créer une catégorie</h2>}
         >
-          
+          <Head title="Create Category -Stock Manager" />
 
             <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
 

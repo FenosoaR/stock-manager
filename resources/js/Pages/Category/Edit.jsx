@@ -1,4 +1,4 @@
-import { useForm } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 export default function Edit({ category }) {
@@ -19,6 +19,8 @@ export default function Edit({ category }) {
         <AuthenticatedLayout
             header={<h2 className="text-xl font-semibold">Modifier une catégorie</h2>}
         >
+             <Head title="Edit Category -Stock Manager" />
+
             <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
 
                 <form onSubmit={submit} className="space-y-4">
