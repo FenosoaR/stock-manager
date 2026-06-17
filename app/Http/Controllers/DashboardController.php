@@ -58,6 +58,11 @@ class DashboardController extends Controller
             ->latest()
             ->take(5)
             ->get(),
+
+        'chartProducts' => Product::select('name', 'stock')
+            ->orderBy('stock', 'desc')
+            ->take(5)
+            ->get(),
     ]);
 }
 }
