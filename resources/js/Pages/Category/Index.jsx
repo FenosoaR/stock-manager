@@ -1,6 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { Head, Link, usePage } from '@inertiajs/react';
+import toast from 'react-hot-toast';
 
 export default function Index({ categories }) {
 

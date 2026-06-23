@@ -42,7 +42,7 @@ class CategoryController extends Controller
         Category::create($request->all());
 
         return redirect()->route('categories.index')
-        ->with('success', 'Catégorie ajoutée avec succès');;
+        ->with('success', 'Catégorie ajoutée avec succès');
     }
 
     /**
@@ -77,7 +77,7 @@ class CategoryController extends Controller
         $category->update($request->all());
 
         return redirect()->route('categories.index')
-        ->with('success', 'Catégorie mis a jour avec succès');;
+        ->with('success', 'Catégorie mis a jour avec succès');
     }
 
     /**

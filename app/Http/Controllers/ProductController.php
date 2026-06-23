@@ -67,7 +67,8 @@ class ProductController extends Controller
         'image' => $imagePath,
     ]);
 
-    return redirect()->route('products.index');
+    return redirect()->route('products.index')
+    ->with('success', 'Produit ajouté avec succès');
 }
 
     /**
@@ -133,7 +134,8 @@ class ProductController extends Controller
         'image' => $imagePath,
     ]);
 
-    return redirect()->route('products.index');
+    return redirect()->route('products.index')
+    ->with('success', 'Produit mis a jour avec succès');
 }
 
     /**
@@ -142,6 +144,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+        ->with('success', 'Produit supprimer avec succès');
     }
 }
